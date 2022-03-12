@@ -1,0 +1,9 @@
+echo "deb http://www.apache.org/dist/cassandra/debian 22x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+deb http://some.debian.mirror/debian/ $distro main contrib non-free
+
+sudo apt update
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9A2FD067A2E3EF7B
+
+sudo apt-get update

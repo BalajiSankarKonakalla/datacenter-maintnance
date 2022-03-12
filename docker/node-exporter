@@ -1,0 +1,1 @@
+sudo docker run -d   -p 9100:9100   --restart unless-stopped   -v "/:/host:ro,rslave"   quay.io/prometheus/node-exporter:latest   --path.rootfs=/host

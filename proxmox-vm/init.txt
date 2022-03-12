@@ -1,0 +1,43 @@
+Refresh DNS Cache
+
+sudo killall -HUP mDNSResponder
+
+echo "nameserver 8.8.8.8" | sudo tee /etc/resolv.conf > /dev/null
+echo "nameserver 192.168.1.1" | sudo tee /etc/resolv.conf > /dev/null
+
+
+======================
+sudo apt update
+sudo apt upgrade
+
+sudo apt install openjdk-8-jdk
+sudo update-alternatives --config java
+
+
+sudo truncate -s 0 /etc/machine-id
+
+sudo vi /etc/hosts
+sudo vi /etc/hostname
+
+sudo apt install -y cloud-init cloud-initramfs-growroot qemu-guest-agent sudo git curl
+sudo apt install -y fish figlet tmux mlocate fonts-powerline resolvconf htop iftop bmon net-tools dnsutils gnupg2 ntpdate
+
+sudo ufw disable
+
+Disk Resize:-   https://pve.proxmox.com/wiki/Resize_disks
+
+sudo df -l  —> Shows logical and physical partition
+sudo fdisk -l
+Find the partition associated with ‘/’
+Eg: /dev/mapper/ubuntu--vg-ubuntu--lv   5090944 2588184   2224440  54% 
+
+sudo sgdisk -e /dev/sda
+
+sudo parted /dev/sda
+(parted) resizepart 3 100%
+(parted) quit
+
+sudo pvresize /dev/sda3
+
+sudo lvresize --size +25G --resizefs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo lvresize --extents +100%FREE --resizefs  /dev/mapper/ubuntu--vg-ubuntu--lv
