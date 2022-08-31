@@ -41,3 +41,12 @@ sudo pvresize /dev/sda3
 
 sudo lvresize --size +25G --resizefs /dev/mapper/ubuntu--vg-ubuntu--lv
 sudo lvresize --extents +100%FREE --resizefs  /dev/mapper/ubuntu--vg-ubuntu--lv
+
+
+==================================
+
+sudo apt install openjdk-8-jdk
+
+
+
+

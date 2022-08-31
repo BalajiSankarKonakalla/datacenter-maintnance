@@ -11,4 +11,4 @@ sudo apt-get update
 
 sudo apt-get install docker-ce docker-ce-cli containerd.io
 
-echo "nameserver 192.168.1.1" | sudo tee /etc/resolv.conf > /dev/null
+echo "nameserver 192.168.71.1" | sudo tee /etc/resolv.conf > /dev/null

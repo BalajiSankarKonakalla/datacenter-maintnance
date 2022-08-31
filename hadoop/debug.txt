@@ -1,0 +1,45 @@
+
+
+Must remove hostname association with 172.0.0.1 in /etc/hosts file
+
+
+export HADOOP_ROOT_LOGGER=DEBUG,console
+hdfs datanode
+
+blastn -query  -db GRCh38_latest_genomic.fna -outfmt 6 -out ${basePath}result-${index}.tab -subject_besthit
+
+export HADOOP_HOME=/opt/hadoop/hadoop-3.2.4
+export HADOOP_HEAPSIZE=512
+export HIVE_CONF_DIR=/opt/hadoop/apache-hive-3.1.3-bin/conf
+export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64
+export YARN_HOME=$HADOOP_HOME
+
+
+
+export HADOOP_HOME=/opt/hadoop/hadoop-3.2.4
+export PATH=$PATH:$HADOOP_HOME/bin
+export PATH=$PATH:$HADOOP_HOME/sbin
+export HADOOP_MAPRED_HOME=${HADOOP_HOME}
+export HADOOP_COMMON_HOME=${HADOOP_HOME}
+export HADOOP_HDFS_HOME=${HADOOP_HOME}
+export YARN_HOME=${HADOOP_HOME}
+
+
+
+export YARN_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export SPARK_HOME=/opt/hadoop/spark-3.1.3-bin-hadoop3.2
+export PATH=$PATH:$SPARK_HOME/bin
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-amd64
+
+guava-27.0-jre.jar
+guava-19.0.jar
+
+
+
+hive --service hiveserver2 --hiveconf hive.server2.thrift.port=10000 --hiveconf hive.root.logger=INFO,console
+
+hive --service hiveserver2 > /dev/null 2>&1 &
+
+hive --service metastore 
+
+hiveserver2 --hiveconf hive.server2.webui.port=678 --hiveconf hive.server2.webui.host=hadoop-1 --hiveconf hive.root.logger=INFO,console
