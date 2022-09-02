@@ -43,3 +43,19 @@ hive --service hiveserver2 > /dev/null 2>&1 &
 hive --service metastore 
 
 hiveserver2 --hiveconf hive.server2.webui.port=678 --hiveconf hive.server2.webui.host=hadoop-1 --hiveconf hive.root.logger=INFO,console
+
+
+
+
+
+
+
+
+
+
+
+Quick References:
+
+nohup spark-submit --master yarn --deploy-mode client --conf "spark.driver.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties" --conf "spark.executor.extraJavaOptions=-Dlog4j.configuration=log4j-spark.properties" --conf "spark.speculation=false" --conf "spark.locality.wait=0" --executor-cores 1 --conf spark.executor.memory=7g --num-executors 7 --class com.wissen.BlastManager distributedblast-1.0.jar "/blast/input/20MB_ERR016162_1.fasta" "/home/dc-user/blast/intermediate-data" "/blast/output/20mb/out-11" "7" > 20mb-7exec-1-run.log &
+
+

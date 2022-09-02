@@ -1,0 +1,4 @@
+crontab -e # from dc-user
+
+@reboot /opt/hadoop/hadoop-3.2.4/sbin/start-all.sh
+@reboot nohup /opt/hadoop/apache-hive-3.1.3-bin/bin/hive --service metastore &

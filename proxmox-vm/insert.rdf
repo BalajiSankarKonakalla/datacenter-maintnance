@@ -1,0 +1,45 @@
+V1:
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://looneytunes-graph.com/>
+
+INSERT{
+	:Buggs_Bunny rdf:type :Looney_Tunes_Character ;
+		:name "Buggs Bunny" ;
+		:species "Hare" ;
+		:gender "Male" .
+} WHERE {}
+
+
+V2:
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://looneytunes-graph.com/>
+
+INSERT{
+	:Buggs_Bunny a :Looney_Tunes_Character ;
+		:name "Buggs Bunny" ;
+		:species "Hare" ;
+		:gender "Male" .
+} WHERE {}
+
+
+V3:
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX : <http://looneytunes-graph.com/>
+
+INSERT{
+	:Buggs_Bunny a :Looney_Tunes_Character ;
+		:name "Buggs Bunny" ;
+		:species "Hare" ;
+		:gender "Male" ;
+        :made_debut_appearance_in :A_Wild_Hare ;
+        :created_by :Tex_Avery ;
+        :personality_trait "Cunning" ;
+        :personality_trait "Charismatic" ;
+        :personality_trait "Smart" ;
+		:known_for_catchphrase "What's up doc?" .
+} WHERE {}
+
+V4
