@@ -1,0 +1,71 @@
+
+Sources
+https://www.letscloud.io/community/how-install-redis-from-source-ubuntu-18-04
+supervised systemd
+https://www.linode.com/docs/guides/how-to-install-and-configure-a-redis-cluster-on-ubuntu-1604/
+
+
+
+
+Redis Masters
+
+redis-1:6379
+redis-2:6379
+redis-3:6379
+
+Redis replicas
+
+redis-1:6381
+redis-2:6381
+redis-3:6381
+
+redis-1:6381 is slave of redis-2:6379
+redis-2:6381 is slave of redis-3:6379
+redis-3:6381 is slave of redis-1:6379
+
+
+Config for master:
+
+bind 127.0.0.1 192.0.2.1
+protected-mode no
+port 6379
+pidfile /var/run/redis_6379.pid
+cluster-enabled yes
+cluster-config-file nodes-6379.conf
+cluster-node-timeout 15000
+
+
+
+Config for slave:
+
+bind 127.0.0.1 192.0.2.1
+protected-mode no
+port 6381
+pidfile /var/run/redis_6381.pid
+cluster-enabled yes
+cluster-config-file nodes-6381.conf
+cluster-node-timeout 15000
+
+
+Set static IPs
+redis-1: 192.168.71.31
+redis-2: 192.168.71.32
+redis-3: 192.168.71.33
+
+
+redis-cli --cluster create 192.168.71.31:6379 192.168.71.32:6379 192.168.71.33:6379
+
+
+redis-cli cluster nodes
+
+f04886a8120b2b63d73679f85f79c6c1b7926202 192.168.71.31:6379@16379 myself,master - 0 1667495492000 1 connected 0-5460
+f51a6896c1b4b25facb64da34ef858418dd3fd0e 192.168.71.33:6379@16379 master - 0 1667495491796 3 connected 10923-16383
+30a1bdfbcb96bfa970a3073add41f60b9359a092 192.168.71.32:6379@16379 master - 0 1667495492800 2 connected 5461-10922
+
+
+redis-cli --cluster add-node $SERVER_1_IP_ADDRESS:6381 $SERVER_3_IP_ADDRESS:6381 --cluster-slave \
+  --cluster-master-id $MASTER_ID_C
+
+
+redis-cli --cluster add-node 192.168.71.31:6381  --cluster-slave --cluster-master-id 30a1bdfbcb96bfa970a3073add41f60b9359a092
+

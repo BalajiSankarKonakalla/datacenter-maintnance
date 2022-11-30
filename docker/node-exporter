@@ -1,1 +1,10 @@
 sudo docker run -d   -p 9100:9100   --restart unless-stopped   -v "/:/host:ro,rslave"   quay.io/prometheus/node-exporter:latest   --path.rootfs=/host
+
+
+docker run -v /home/dc-user/redisinsight:/db -p 8001:8001 --restart unless-stopped redislabs/redisinsight:latest 
+
+
+docker run -v redisinsight:/db -p 8001:8001 redislabs/redisinsight:latest --restart unless-stopped
+
+
+docker pull benoitg/redis-desktop-manager

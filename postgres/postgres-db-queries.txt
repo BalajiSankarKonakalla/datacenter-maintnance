@@ -1,0 +1,47 @@
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04
+
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+
+sudo systemctl start postgresql.service
+
+sudo -i -u postgres
+psql
+
+
+
+CREATE USER datacanny WITH PASSWORD 'proxmox';
+CREATE USER dcuser WITH PASSWORD 'proxmox';
+CREATE USER hive WITH PASSWORD 'proxmox';
+CREATE USER graphana WITH PASSWORD 'proxmox';
+CREATE USER hue WITH PASSWORD 'proxmox';
+CREATE USER superset WITH PASSWORD 'proxmox';
+CREATE USER airflow WITH PASSWORD 'proxmox';
+
+
+
+CREATE DATABASE datacanny;
+GRANT ALL PRIVILEGES ON DATABASE "datacanny" to datacanny;
+
+CREATE DATABASE hive;
+GRANT ALL PRIVILEGES ON DATABASE "hive" to hive;
+
+CREATE DATABASE dcuser;
+GRANT ALL PRIVILEGES ON DATABASE "dcuser" to dcuser;
+
+CREATE DATABASE graphana;
+GRANT ALL PRIVILEGES ON DATABASE "graphana" to dcuser;
+
+
+CREATE DATABASE hue;
+GRANT ALL PRIVILEGES ON DATABASE "hue" to hue;
+
+CREATE DATABASE superset;
+GRANT ALL PRIVILEGES ON DATABASE "superset" to superset;
+
+CREATE DATABASE airflow;
+GRANT ALL PRIVILEGES ON DATABASE "airflow" to airflow;
+
+
+ALTER USER postgres WITH PASSWORD 'proxmox';
+

@@ -1,0 +1,57 @@
+
+https://superset.apache.org/docs/installation/installing-superset-from-scratch/
+
+sudo apt-get install python3-venv
+
+pip install --upgrade pip
+
+pip3 install apache-superset
+
+pip3 install setuptools_rust
+
+pip3 install sqlalchemy
+
+pip3 install itsdangerous==1.1.0
+pip3 install sqlalchemy==1.3.24
+pip3 install flask-appbuilder==3.1.1
+
+pip3 install dataclasses
+
+pip3 install psycopg2
+
+superset db upgrade
+
+sudo vi /etc/init.d/superset 
+
+
+
+superset run -h apache-superset -p 8088 --with-threads --reload -b
+
+postgresql://superset:proxmox@postgres-db:5432/postgres
+
+export SUPERSET_CONFIG_PATH=/home/dc-user/superset_config.py
+sudo pip3 install pyOpenSSL --upgrade
+sudo pip3 install cryptography --upgrade
+
+
+
+sudo vi /etc/systemd/system/superset.service
+
+[Unit]
+Description = Apache Superset Webserver Daemon
+After = network.target
+
+[Service]
+PIDFile = /home/dc-user/superset-webserver.PIDFile
+User=dc-user
+Environment=/home/dc-user/superset
+WorkingDirectory=/home/dc-user/superset
+ExecStart=/home/dc-user/superset/bin/python3 /home/dc-user/superset/bin/superset run -h apache-superset -p 8088 --with-threads --reload
+ExecStop = /bin/kill -s TERM $MAINPID
+
+
+[Install]
+WantedBy=multi-user.target
+
+
+sudo systemctl daemon-reload
