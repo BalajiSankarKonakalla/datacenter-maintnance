@@ -1,0 +1,13 @@
+
+sudo truncate -s 0 /etc/machine-id
+
+sudo vi /etc/hosts
+sudo vi /etc/hostname
+
+
+sudo ufw disable
+
+sudo apt install -y cloud-init cloud-initramfs-growroot qemu-guest-agent sudo git curl
+sudo apt install -y fish figlet tmux mlocate fonts-powerline resolvconf htop iftop bmon net-tools sudo apt install qemu-kvm libvirt-daemon-system libvirt-clients bridge-utils
+
+sudo systemctl enable --now qemu-guest-agent

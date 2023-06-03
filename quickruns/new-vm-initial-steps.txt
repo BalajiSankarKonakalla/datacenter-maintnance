@@ -1,0 +1,10 @@
+###### VM Initial steps ######
+sudo apt install qemu-guest-agent
+systemctl status qemu-guest-agent.service
+systemctl enable qemu-guest-agent.service
+
+sudo apt install git curl figlet lolcat
+
+figlet -f slant -c "Datacanny" | lolcat && figlet -f digital -c "Data Insights" | lolcat >> ~/.bashrc
+
+

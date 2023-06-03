@@ -1,0 +1,5 @@
+##### ISO to PenDrive #####
+diskutil list                     -> list of all mounted drives
+diskutil unmountDisk /dev/disk2   -> Unmount disk
+sudo dd if=/iso-path.iso of=/dev/disk2 bs=10m
+

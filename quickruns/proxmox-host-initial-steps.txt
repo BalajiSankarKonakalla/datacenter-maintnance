@@ -1,0 +1,5 @@
+###### Delete partititon info ######
+fdisk /dev/sdb
+p -> provide partition info
+d -> delete content in partition
+w -> save

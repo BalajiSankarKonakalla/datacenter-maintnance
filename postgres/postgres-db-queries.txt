@@ -8,6 +8,10 @@ sudo systemctl start postgresql.service
 sudo -i -u postgres
 psql
 
+https://www.bigbinary.com/blog/configure-postgresql-to-allow-remote-connection
+
+
+
 
 
 CREATE USER datacanny WITH PASSWORD 'proxmox';
@@ -17,6 +21,7 @@ CREATE USER graphana WITH PASSWORD 'proxmox';
 CREATE USER hue WITH PASSWORD 'proxmox';
 CREATE USER superset WITH PASSWORD 'proxmox';
 CREATE USER airflow WITH PASSWORD 'proxmox';
+CREATE USER mystifly WITH PASSWORD 'mystifly';
 
 
 

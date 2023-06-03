@@ -1,0 +1,19 @@
+Disk Resize:-   https://pve.proxmox.com/wiki/Resize_disks
+
+sudo df -l  —> Shows logical and physical partition
+sudo fdisk -l
+Find the partition associated with ‘/’
+Eg: /dev/mapper/ubuntu--vg-ubuntu--lv   5090944 2588184   2224440  54% 
+
+sudo sgdisk -e /dev/sda
+
+sudo parted /dev/sda
+(parted) resizepart 3 100%
+(parted) quit
+
+sudo pvresize /dev/sda3
+
+sudo lvresize --size +25G --resizefs /dev/mapper/ubuntu--vg-ubuntu--lv
+sudo lvresize --extents +100%FREE --resizefs  /dev/mapper/ubuntu--vg-ubuntu--lv
+
+
